@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace Conexão_Educacional.Menus
 {
-    internal class Desafios
+    public class Desafios
     {
+
+       public void VerDesafios()
+        {
+
+            Console.WriteLine("Desafio 1 - Lógica de Programação - InfoTech");
+            Console.WriteLine("Desafio 2 - Front-End - InfoTech");
+            Console.WriteLine("Desafio 3 - Banco de Dados - BluTech");
+
+        }
+
     }
 }
