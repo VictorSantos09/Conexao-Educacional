@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Conexão_Educacional.Entities
 {
-    internal class ProjectEntity
+    public class ProjectEntity
     {
+
+        public int Name { get; set; }
+
+
     }
 }
