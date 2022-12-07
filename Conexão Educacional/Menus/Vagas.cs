@@ -4,31 +4,76 @@ namespace Conexão_Educacional.Menus
 {
     public class Vagas
     {
-        public void Menu(UserEntity userEntity)
-        {
-            VerVagas();
-            Candidatar(userEntity);
+        private readonly UserEntity _user;
+        private readonly List<VacanciesEntity> _vacancies;
 
-        }
-        public void VerVagas()
+        public Vagas(UserEntity user, List<VacanciesEntity> vacancies)
         {
-            Console.WriteLine("1 - Vaga 1");
-            Console.WriteLine("1 - Vaga 2");
-            Console.WriteLine("1 - Vaga 3");
-            Console.WriteLine("1 - Vaga 4");
-            Console.WriteLine("1 - Vaga 5");
+            _user = user;
+            _vacancies = vacancies;
         }
-        public bool Candidatar(UserEntity userEntity)
-        {
-            VerVagas();
-            Console.WriteLine("Qual vaga quer se candidatar?\n");
-            var userChoice = Console.ReadLine();
 
-            if (userChoice == "1")
+        public void Menu()
+        {
+            Console.WriteLine("1 - Ver Vagas");
+            Console.WriteLine("2 - Candidatar");
+
+            switch (Console.ReadLine())
             {
-                Console.WriteLine($"Você agora está participando do processo seletivo  de {"vaga de tal empresa"}");
-                userEntity.SubscriptionsDone++;
-                return true;
+                case "1":
+                    VerVagas();
+                    break;
+
+                case "2":
+                    Candidatar();
+                    break;
+
+                default:
+                    Console.WriteLine("Opção Indisponivel");
+                    break;
+            }
+        }
+
+        public bool VerVagas()
+        {
+            if (_vacancies.Count is 0)
+            {
+                Console.WriteLine("Não há vagas registradas");
+                Thread.Sleep(1300);
+                return false;
+            }
+
+            var counter = 1;
+            foreach (var item in _vacancies)
+            {
+
+                Console.WriteLine($"{counter++} - {item.Name}");
+            }
+
+            return true;
+        }
+
+        public bool Candidatar()
+        {
+            if (VerVagas())
+            {
+                Console.WriteLine("Qual vaga deseja se candidatar?\n");
+                var userChoice = Convert.ToInt32(Console.ReadLine());
+
+                userChoice--;
+
+                var vacancieId = _vacancies.FindIndex(x => x.Id == userChoice);
+
+                var vacancie = _vacancies.Find(x => x.Id == vacancieId);
+
+                if (vacancie != null)
+                {
+                    Console.WriteLine($"Você agora está participando do processo seletivo da vaga {vacancie.Name} de {vacancie.CompanyOwner}");
+                    _user.SubscriptionsDone++;
+                    return true;
+                }
+
+                Console.WriteLine("Vaga não encontrada");
             }
 
             return false;
