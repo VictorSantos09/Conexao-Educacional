@@ -9,7 +9,7 @@ namespace Conexão_Educacional.Entities
     public class ProjectEntity
     {
 
-        public int Name { get; set; }
+        public string Name { get; set; }
 
 
     }
