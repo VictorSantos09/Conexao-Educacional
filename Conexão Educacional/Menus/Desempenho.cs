@@ -85,7 +85,7 @@ namespace Conexão_Educacional.Menus
         public void PostProjects(ProjectEntity projectEntity)
         {
             Console.Write("Nome do Projeto:");
-            projectEntity.Name = Console.Read();
+            projectEntity.Name = Convert.ToString(Console.Read());
 
             Console.WriteLine($"Projeto {projectEntity.Name} Cadastrado");
 
