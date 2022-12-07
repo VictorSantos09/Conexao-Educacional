@@ -1,9 +1,18 @@
-﻿using Conexão_Educacional.Entities;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Conexão_Educacional.Entities;
 using Conexão_Educacional.Services;
 using Conexão_Educacional.Menus;
 
-Vagas Vagas = new();
-UserEntity UserEntity = new();
+IServiceCollection services = new ServiceCollection();
+
+services.AddSingleton<Vagas>();
+services.AddSingleton<UserService>();
+services.AddSingleton<CompanyService>();
+services.AddSingleton<CompanyEntity>();
+
+var user = new UserEntity{Name = "Victor", Age = 18};
+
+services.AddSingleton(user);
 
 while (true)
 {
@@ -21,7 +30,7 @@ while (true)
     switch (Console.ReadLine())
     {
         case "1":
-            Vagas.Menu(UserEntity);
+            Vagas.Menu(user);
             break;
 
         case "2":
