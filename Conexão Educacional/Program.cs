@@ -2,22 +2,34 @@
 using Conexão_Educacional.Entities;
 using Conexão_Educacional.Services;
 using Conexão_Educacional.Menus;
+using Conexão_Educacional.Repository;
 
 IServiceCollection services = new ServiceCollection();
 
-services.AddSingleton<Vagas>();
 services.AddSingleton<UserService>();
 services.AddSingleton<CompanyService>();
-services.AddSingleton<CompanyEntity>();
+services.AddSingleton<CandidatesRepository>();
+services.AddSingleton<VacanciesRepository>();
 
-var user = new UserEntity{Name = "Victor", Age = 18};
-
+var user = new UserEntity { Name = "Victor", Age = 18 };
 services.AddSingleton(user);
+
+var company = new CompanyEntity { Name = "Amazon", Adress = "Ponta Aguda, 155, SC, Blumenau" };
+services.AddSingleton(company);
+
+
+var vacanciesPattern = new List<VacanciesEntity>
+            {
+                new VacanciesEntity {Name = "Assistente de Ti", CompanyOwner = "Havan Labs", Salary = 3000, Id = 0},
+                new VacanciesEntity {Name = "Analista de Negocio", CompanyOwner = "Microsoft", Salary = 8500, Id = 1},
+                new VacanciesEntity {Name = "Dev Pleno", CompanyOwner = "Senior", Salary = 2500, Id = 2}
+            };
+
+Vagas vagas = new(user, vacanciesPattern);
+
 
 while (true)
 {
-    Console.Clear();
-
     Console.WriteLine("LOGIN ESTUDANTE");
 
     Console.WriteLine("1 - Vagas");
@@ -30,7 +42,7 @@ while (true)
     switch (Console.ReadLine())
     {
         case "1":
-            Vagas.Menu(user);
+            vagas.Menu();
             break;
 
         case "2":
