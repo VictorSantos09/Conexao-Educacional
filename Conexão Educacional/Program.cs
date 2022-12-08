@@ -61,6 +61,8 @@ while (true)
             break;
 
         case "5":
+            Visitas visitas = new Visitas();
+            visitas.Menu();
 
             break;
 
