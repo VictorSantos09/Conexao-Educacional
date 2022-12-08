@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Conexão_Educacional.Entities;
+﻿using Conexão_Educacional.Entities;
+using System.Runtime.CompilerServices;
+using static Conexão_Educacional.Crosscutting.Extensions;
 
 namespace Conexão_Educacional.Menus
 {
@@ -14,15 +11,15 @@ namespace Conexão_Educacional.Menus
 
             while (true)
             {
-
                 Console.Clear();
 
                 Console.WriteLine("MENU DESAFIOS");
-                
+
                 Console.WriteLine("1 - Ver Desafios");
                 Console.WriteLine("2 - Participar de Desafios");
+                Console.WriteLine("3 - Voltar ao menu principal");
                 Console.Write("Digite: ");
-                
+
                 switch (Console.ReadLine())
                 {
                     case "1":
@@ -33,26 +30,28 @@ namespace Conexão_Educacional.Menus
                         ApplyChallanges(userEntity);
                         break;
 
+                    case "3":
+                        return;
+
                     default:
                         Console.WriteLine("Entrada Inválida");
                         break;
                 }
-
             }
-
         }
-       public void SeeChallanges()
+        public void SeeChallanges()
         {
-
             Console.WriteLine("Desafio 1 - Lógica de Programação - InfoTech");
             Console.WriteLine("Desafio 2 - Front-End - TechData");
             Console.WriteLine("Desafio 3 - Banco de Dados - BluTech");
 
+            Holder();
         }
 
         public bool ApplyChallanges(UserEntity userEntity)
         {
             SeeChallanges();
+
             Console.WriteLine("Qual desafio quer se candidatar?\n");
             var userChoice = Console.ReadLine();
 
@@ -60,11 +59,13 @@ namespace Conexão_Educacional.Menus
             {
                 Console.WriteLine($"Você respondeu o desafio de Lógica de Programação da empresa InfoTech");
                 userEntity.ChallangesDone++;
+                Holder();
                 return true;
             }
             else if (userChoice == "2")
             {
                 Console.WriteLine($"Você respondeu o desafio de Front-End da empresa TechData");
+                Holder();
                 return true;
                 userEntity.ChallangesDone++;
             }
@@ -72,11 +73,11 @@ namespace Conexão_Educacional.Menus
             {
                 Console.WriteLine($"Você respondeu o desafio de Banco de Dados da empresa BluTech");
                 userEntity.ChallangesDone++;
+                Holder();
                 return true;
             }
             return false;
         }
     }
-
 }
 

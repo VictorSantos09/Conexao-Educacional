@@ -28,6 +28,8 @@ var vacanciesPattern = new List<VacanciesEntity>
 Vagas vagas = new(user, vacanciesPattern);
 
 
+var project = new ProjectEntity { Name = "Solução de Loja" };
+
 while (true)
 {
     Console.WriteLine("LOGIN ESTUDANTE");
@@ -46,15 +48,16 @@ while (true)
             break;
 
         case "2":
-
-            break;  
+            Desempenho desempenho = new();
+            desempenho.Menu(project);
+            break;
 
         case "3":
-
             break;
 
         case "4":
-
+            Desafios desafios = new();
+            desafios.Menu(user);
             break;
 
         case "5":
