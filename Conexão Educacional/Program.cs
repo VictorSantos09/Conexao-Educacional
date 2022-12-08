@@ -53,6 +53,8 @@ while (true)
             break;
 
         case "3":
+            Eventos eventos = new();
+            eventos.Menu();
             break;
 
         case "4":

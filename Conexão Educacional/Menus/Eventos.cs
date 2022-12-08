@@ -38,7 +38,7 @@ namespace Conexão_Educacional.Menus
                     }
                     else
                     {
-                        Console.WriteLine("Comando incorreto!");
+                        Console.WriteLine("Opção Inválida");
                         break;
                     }
                 default:
@@ -61,7 +61,7 @@ namespace Conexão_Educacional.Menus
                 Console.WriteLine("Você se inscreveu no evento com sucesso!");
                 eventValidation = true;
             }
-            else if (userChoice != "2")
+            else if (userChoice == "2")
             {
                 Console.WriteLine("Inscrição não aprovada");
             }

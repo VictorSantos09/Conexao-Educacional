@@ -15,6 +15,8 @@ namespace Conexão_Educacional.Menus
 
         public void Menu()
         {
+            Console.Clear();
+
             Console.WriteLine("1 - Ver Vagas");
             Console.WriteLine("2 - Candidatar");
 
