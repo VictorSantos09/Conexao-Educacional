@@ -9,7 +9,7 @@ namespace Conexão_Educacional.Menus
 {
     public class Eventos
     {
-        public string Event1 { get; set; } = "Local '1', Horário: 18h:30min";
+        public string Event1 { get; set; } = "Local 'Teatro Carlos Gomes', Horário: 18h:30min";
         bool eventValidation = false;
 
         public void Menu()
@@ -30,7 +30,7 @@ namespace Conexão_Educacional.Menus
                         Candidatar();
                         break;
                     }
-                    if (inputUser == "2")
+                    else if (inputUser == "2")
                     {
                         VerEventos();
                         Candidatado();
@@ -46,9 +46,9 @@ namespace Conexão_Educacional.Menus
                     break;
             }
         }
-        public string VerEventos()
+        public void VerEventos()
         {
-            return Event1;
+            Console.WriteLine($"{Event1}");
         }
 
         public void Candidatar()
@@ -61,7 +61,7 @@ namespace Conexão_Educacional.Menus
                 Console.WriteLine("Você se inscreveu no evento com sucesso!");
                 eventValidation = true;
             }
-            if (userChoice != "2")
+            else if (userChoice != "2")
             {
                 Console.WriteLine("Inscrição não aprovada");
             }

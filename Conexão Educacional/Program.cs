@@ -50,7 +50,8 @@ while (true)
             break;
 
         case "3":
-
+            Eventos eventos = new Eventos();
+            eventos.Menu();
             break;
 
         case "4":
@@ -58,6 +59,8 @@ while (true)
             break;
 
         case "5":
+            Visitas visitas = new Visitas();
+            visitas.Menu();
 
             break;
 

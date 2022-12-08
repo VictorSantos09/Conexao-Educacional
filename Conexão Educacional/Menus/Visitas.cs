@@ -29,7 +29,7 @@ namespace Conexão_Educacional.Menus
                         Candidatar();
                         break;
                     }
-                    if (inputUser == "2")
+                    else if (inputUser == "2")
                     {
                         VerVisitas();
                         Candidatado();
@@ -45,9 +45,9 @@ namespace Conexão_Educacional.Menus
                     break;
             }
         }
-        public string VerVisitas()
+        public void VerVisitas()
         {
-            return Visit1;
+            Console.WriteLine($"{Visit1}");
         }
 
         public void Candidatar()
@@ -60,7 +60,7 @@ namespace Conexão_Educacional.Menus
                 Console.WriteLine("Você está inscrito na visita!");
                 visitValidation = true;
             }
-            if (userChoice != "2")
+            else if (userChoice == "2")
             {
                 Console.WriteLine("Inscrição não aprovada");
             }
