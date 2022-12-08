@@ -1,4 +1,4 @@
-﻿using Conexão_Educacional.Entities;
+﻿    using Conexão_Educacional.Entities;
 
 namespace Conexão_Educacional.Menus
 {
@@ -21,11 +21,11 @@ namespace Conexão_Educacional.Menus
             switch (Console.ReadLine())
             {
                 case "1":
-                    VerVagas();
+                    ViewVacancies();
                     break;
 
                 case "2":
-                    Candidatar();
+                    RegisterToVacancie();
                     break;
 
                 default:
@@ -34,7 +34,7 @@ namespace Conexão_Educacional.Menus
             }
         }
 
-        public bool VerVagas()
+        public bool ViewVacancies()
         {
             if (_vacancies.Count is 0)
             {
@@ -53,9 +53,9 @@ namespace Conexão_Educacional.Menus
             return true;
         }
 
-        public bool Candidatar()
+        public bool RegisterToVacancie()
         {
-            if (VerVagas())
+            if (ViewVacancies())
             {
                 Console.WriteLine("Qual vaga deseja se candidatar?\n");
                 var userChoice = Convert.ToInt32(Console.ReadLine());
